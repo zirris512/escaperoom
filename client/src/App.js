@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
+import "./phaser/config.js";
 
 
 function App() {
   return (
-    <div id="game">
-      
+    <div>
+      <div id="game"></div>
     </div>
   );
 }
