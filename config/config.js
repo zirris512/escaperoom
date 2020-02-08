@@ -1,8 +1,10 @@
-{
+require("dotenv").config();
+
+module.exports = {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "dev",
+    "username": process.env.DB_USER,
+    "password": process.env.DB_PASSWORD,
+    "database": "escaperoom",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "define": {
