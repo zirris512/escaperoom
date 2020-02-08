@@ -2,7 +2,6 @@ const WHITE_LIST = [
   'http://localhost:3001',
   'http://localhost:3001/',
 ];
-
 exports.corsOptions = {
   origin: (origin, callback) => {
     console.log('Origin: ', origin); // eslint-disable-line no-console
