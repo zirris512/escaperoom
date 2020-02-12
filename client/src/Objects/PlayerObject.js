@@ -1,1 +1,4 @@
 //player object
+
+const ship = []
+
