@@ -5,6 +5,7 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
+    "path": "^0.12.7",
     "phaser": "^3.22.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
