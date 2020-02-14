@@ -9,6 +9,9 @@
     "type": "git",
     "url": "git+https://github.com/TBD"
   },
+  "engines": {
+    "node": "10.16.0"
+  },
   "homepage": "EscapeRoom",
   "scripts": {
     "start": "if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
