@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.scss';
 import "./phaser/config.js";
+import "./pages/intro"
+
 
 
 function App() {
@@ -10,5 +12,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

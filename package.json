@@ -71,6 +71,7 @@
     "passport-session": "^1.0.2",
     "phaser": "^3.22.0",
     "scss": "^0.2.4",
-    "sequelize": "^4.44.3"
+    "sequelize": "^4.44.3",
+    "stack": "^0.1.0"
   }
 }
