@@ -1,12 +1,15 @@
 import React from 'react';
 import 'pages/home.scss';
-import 'phaser/config.js'
+
 
 
 function home () {
     return (
     <div>
-      <div id="game"></div>
+        <h1>STYLE THIS SECTION TO MAKE FRONT SCREEN</h1>
+        <button>Start</button>
+        <button>Log In</button>
+      
     </div>
   );
   }
