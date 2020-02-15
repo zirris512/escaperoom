@@ -1,6 +1,5 @@
 import Phaser from "phaser";
-import game from "../config";
-import scaryShip from "../assets/scary-ship.jpg";
+import dungeon from "../assets/dungeon.jpg";
 
 class room1 extends Phaser.Scene {
     constructor() {
@@ -9,13 +8,13 @@ class room1 extends Phaser.Scene {
 
     preload(){
         //load ressources
-        this.load.image("ship", scaryShip);
+        this.load.image("dungeon", dungeon);
         console.log("ready set, GO!")
     }
 
     create(){
         //definine objects
-        this.background = this.add.image(game.config.width/2,game.config.height/2,"ship")
+        this.background = this.add.image(this.cameras.main.width/2,this.cameras.main.height/2,"dungeon");
         console.log("message!")
     }
 
