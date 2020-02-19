@@ -3,8 +3,10 @@ import room1 from "./scenes/room1";
 
 const config = {
     type: Phaser.AUTO,
+
     width: 1410,
     height: 600,
+
     scene: [room1],
     parent: "game"
 };
