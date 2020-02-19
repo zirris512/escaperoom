@@ -1,11 +1,11 @@
 import React from 'react';
 import 'pages/game.scss';
-import '../phaser/config'
-
+import Game from '../phaser/config';
 
 function game () {
     return (
         <div className='gamescreen'>
+            {/* {Game} */}
             
         </div>
     )

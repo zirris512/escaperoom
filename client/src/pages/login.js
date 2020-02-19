@@ -6,6 +6,7 @@ import 'pages/login.scss';
 function login () {
     return (
         <div className='login'>
+           
         
         </div>
 
