@@ -1,9 +1,38 @@
 body{
-    background-image: url(../images/fantasy-3077928__340.webp);
-    background-size: cover;
+    background: url(../images/prisoner.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
 }
 
 
-.h1{
+h1{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    border-bottom: 1px solid white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;;
 }
+
+.buttons {
+    width: 100%;
+    height: 800px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  button {
+    height: 20px;
+    width: 100px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    margin: 20px;
+    font-weight: bolder;
+  }
+
+

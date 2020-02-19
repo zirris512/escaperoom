@@ -5,16 +5,19 @@ import 'pages/home.scss';
 
 function home () {
     return (
-    <div>
-        <h1>STYLE THIS SECTION TO MAKE FRONT SCREEN</h1>
-        <button>Start</button>
-        <button>Log In</button>
+    <div className='homeScreen'>
+        <h1>ESCAPE</h1>
+        <div className='buttons'>
+        <button className='start'>Start</button>
+        <button className='logIn'>Log In</button>
+        </div>
+
       
     </div>
   );
   }
 
 
-  export default home
+    export default home
 
 
