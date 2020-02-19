@@ -2,6 +2,7 @@ import React from 'react';
 import 'pages/home.scss';
 
 
+
 function home () {
     return (
     <div className='homeScreen'>
@@ -10,6 +11,7 @@ function home () {
         <button className='start'>Start</button>
         <button className='logIn'>Log In</button>
         </div>
+
       
     </div>
   );
