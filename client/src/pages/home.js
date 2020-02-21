@@ -1,6 +1,7 @@
 import React from 'react';
 import 'pages/home.scss';
-
+import { link } from 'fs';
+import {Link } from 'react-router-dom'
 
 
 function home () {
@@ -8,7 +9,7 @@ function home () {
     <div className='homeScreen'>
         <h1>ESCAPE</h1>
         <div className='buttons'>
-        <button className='start'>Start</button>
+        <Link className='start' to="/game">Start</Link>
         <button className='logIn'>Log In</button>
         </div>
 
