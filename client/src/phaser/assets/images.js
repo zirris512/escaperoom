@@ -4,7 +4,6 @@ import door from "./images/door.png";
 import arrowRight from "./images/arrowright.png";
 import arrowLeft from "./images/arrowleft.png"
 
-
 const images = {room, door, openDoor, arrowRight, arrowLeft};
 
 export default images;
