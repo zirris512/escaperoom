@@ -6,15 +6,6 @@ class room1 extends Phaser.Scene {
         super({ key: "room1" });
     };
 
-    preload(){
-        //load ressources
-        this.load.image("room", images.room);
-        this.load.image("door", images.door);
-        this.load.image("openDoor", images.openDoor);
-        this.load.image("arrowRight", images.arrowRight);
-        this.load.image("arrowLeft", images.arrowLeft);
-    }
-
     create(){
         //definine objects
         this.background = this.add.image(this.cameras.main.displayWidth/2,this.cameras.main.displayHeight/2,"room");
@@ -49,12 +40,6 @@ class room1 extends Phaser.Scene {
             this.scene.start("puzzle3");
         }, this);
     }
-        
-
-    update(){
-        //constant running loop
-    }
-    customFunctions(){}
 }
 
 export default room1;
