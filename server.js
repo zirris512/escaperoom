@@ -3,8 +3,17 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const session = require('express-session');
+const expressLayouts = require('express-ejs-layouts');
+const mongoose = require('mongoose');
+
+
+const flash = require('connect-flash');
+// DB Config
+const db = require('./config/keys').mongoURI;
+
+
 // require routes
-const db = require('./models');
+// const db = require('./models');
 const routes = require('./routes');
 const passport = require('./config/passport');
 const corsOptions = require('./config/cors.js');
@@ -51,22 +60,22 @@ db.sequelize
   })
   .catch(console.error); // eslint-disable-line no-console
 
-//AUTHENTICATION//
+// AUTHENTICATION//
 
-  // Passport Config
+// Passport Config
 require('./config/passport')(passport);
 
-// DB Config
-const db = require('./config/keys').mongoURI;
 
 // Connect to MongoDB
 mongoose
   .connect(
     db,
-    { useNewUrlParser: true }
+    { useNewUrlParser: true },
   )
+  // eslint-disable-next-line no-console
   .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+  // eslint-disable-next-line no-console
+  .catch((err) => console.log(err));
 
 // EJS
 app.use(expressLayouts);
@@ -80,8 +89,8 @@ app.use(
   session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true
-  })
+    saveUninitialized: true,
+  }),
 );
 
 // Passport middleware
@@ -92,7 +101,7 @@ app.use(passport.session());
 app.use(flash());
 
 // Global variables
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
@@ -103,7 +112,6 @@ app.use(function(req, res, next) {
 app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
 
-const PORT = process.env.PORT || 5000;
-
+// eslint-disable-next-line no-console
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
 module.exports = app;
