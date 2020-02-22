@@ -1,40 +1,39 @@
-const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
 
-// Telling passport we want to use a Local Strategy.
-// In other words, we want login with a username/email and password
-passport.use(new LocalStrategy(
-  // Our user will sign in using an email, rather than a 'username'
-  {
-    usernameField: 'email',
-  },
-  async (email, password, done) => {
-    // When a user tries to sign in this code runs
+// Load User model
+const User = require('../models/User');
 
-    const isloginSuccessful = false;
+module.exports = function (passport) {
+  passport.use(
+    new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+      // Match user
+      User.findOne({
+        email,
+      }).then((user) => {
+        if (!user) {
+          return done(null, false, { message: 'That email is not registered' });
+        }
 
-    if (!isloginSuccessful) {
-      // Login failed
-      return done(null, false, {
-        message: 'Invalid user details',
+        // Match password
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+          if (err) throw err;
+          if (isMatch) {
+            return done(null, user);
+          }
+          return done(null, false, { message: 'Password incorrect' });
+        });
       });
-    }
+    }),
+  );
 
-    // Login success
-    return done(null, user);
-  },
-));
+  passport.serializeUser((user, done) => {
+    done(null, user.id);
+  });
 
-// In order to help keep authentication state across HTTP requests,
-// Sequelize needs to serialize and deserialize the user
-// Just consider this part boilerplate needed to make it all work
-passport.serializeUser((user, cb) => {
-  cb(null, user);
-});
-
-passport.deserializeUser((obj, cb) => {
-  cb(null, obj);
-});
-
-// Exporting our configured passport
-module.exports = passport;
+  passport.deserializeUser((id, done) => {
+    User.findById(id, (err, user) => {
+      done(err, user);
+    });
+  });
+};
