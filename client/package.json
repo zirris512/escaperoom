@@ -4,6 +4,10 @@
   "description": "TBD",
   "private": true,
   "proxy": "http://localhost:3001",
+  "engine": {
+    "node": "10.16.0",
+    "npm": "6.9.0"
+  },
   "dependencies": {
     "jquery": "^3.4.1",
     "path": "^0.12.7",
