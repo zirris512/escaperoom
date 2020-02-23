@@ -47,24 +47,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// Dynamically force schema refresh only for 'test'
-const FORCE_SCHEMA = process.env.NODE_ENV === 'test';
-
-db.sequelize
-  .authenticate()
-  .then(() => {
-    db.sequelize.sync({ force: FORCE_SCHEMA }).then(() => {
-      console.log(`🌎 ==> API server now on port ${PORT}!`); // eslint-disable-line no-console
-      app.emit('appStarted');
-    });
-  })
-  .catch(console.error); // eslint-disable-line no-console
-
-// AUTHENTICATION//
-
-// Passport Config
-require('./config/passport')(passport);
-
 
 // Connect to MongoDB
 mongoose
@@ -92,10 +74,6 @@ app.use(
     saveUninitialized: true,
   }),
 );
-
-// Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Connect flash
 app.use(flash());

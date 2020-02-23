@@ -1,6 +1,5 @@
 import React from 'react';
-import 'pages/home.scss';
-import { link } from 'fs';
+import 'pages/Home.scss';
 import {Link } from 'react-router-dom'
 
 
@@ -10,7 +9,7 @@ function home () {
         <h1>ESCAPE</h1>
         <div className='buttons'>
         <Link className='start' to="/game">Start</Link>
-        <button className='logIn'>Log In</button>
+        <Link className='logIn'to="/logIn">Log In</Link>
         </div>
 
       

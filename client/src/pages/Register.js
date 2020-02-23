@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import '../pages/Register.scss'
+import { Link, withRouter } from 'react-router-dom';
+import axios from 'axios';
 
-function Register (){
+function Register(props) {
+  const username = useRef('');
+  const email = useRef('');
+  const password = useRef('');
+  const confirmPassword = useRef('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const data = {
+      name: username.current.value,
+      email: email.current.value,
+      password: password.current.value,
+      password2: confirmPassword.current.value
+    }
+    
+    axios.post('/users/register', data).then(() => {
+      props.history.push('/dashboard');
+    }).catch((e) => {
+      console.log('There was an error', e);
+    });
+  }
+
     return(
         <div className="row mt-5">
     <div className="col-md-6 m-auto">
@@ -10,7 +33,7 @@ function Register (){
           <i className="fas fa-user-plus"></i> Register
         </h1>
         
-        <form action="/users/register" method="POST">
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label for="name">Name</label>
             <input
@@ -19,7 +42,7 @@ function Register (){
               name="name"
               className="form-control"
               placeholder="Enter Name"
-            
+              ref={username}
             />
           </div>
           <div className="form-group">
@@ -30,7 +53,7 @@ function Register (){
               name="email"
               className="form-control"
               placeholder="Enter Email"
-             
+             ref={email}
             />
           </div>
           <div className="form-group">
@@ -41,7 +64,7 @@ function Register (){
               name="password"
               className="form-control"
               placeholder="Create Password"
-              
+              ref={password}
             />
           </div>
           <div className="form-group">
@@ -52,14 +75,14 @@ function Register (){
               name="password2"
               className="form-control"
               placeholder="Confirm Password"
-             
+             ref={confirmPassword}
             />
           </div>
           <button type="submit" className="btn btn-primary btn-block">
             Register
           </button>
         </form>
-        <p className="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
+        <p className="lead mt-4">Have An Account? <Link to="/login">Login</Link></p>
       </div>
     </div>
   </div>
@@ -67,4 +90,4 @@ function Register (){
     )
 }
 
-export default Register
+export default withRouter(Register);
