@@ -3,13 +3,23 @@ import './App.scss';
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Game from "./pages/game";
+import Register from "./pages/Register";
+import Welcome from "./pages/Welcome";
+import Layout from "./pages/Layout";
+import Dashboard from "./pages/Dashboard";
 
+<<<<<<< HEAD
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AnimatedSwitch } from 'react-router-transition';
+=======
+import {BrowserRouter as Router, Route } from "react-router-dom";
+import Logout from './pages/Logout';
+>>>>>>> 376f186d2a23c3d67fc0f68504aef8f5eba81276
 
 
 function App() {
   return (
+<<<<<<< HEAD
     <Router>
       <AnimatedSwitch
             atEnter={{ opacity: 0 }}
@@ -21,6 +31,21 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/game" component={Game} />
       </AnimatedSwitch>
+=======
+  <Router>
+    <div>
+      <Route exact path= "/" component={Home}/>
+      <Route exact path="/login" component={Login}/>
+      <Route exact path="/game" component={Game}/>
+      <Route exact path="/register" component={Register}/>
+      <Route exact path="/welcome" component={Welcome}/>
+      <Route exact path="/layout" component={Layout}/>
+      <Route exact path="/logout" component={Logout}/>
+      <Route exact path="/dashboard" component={Dashboard}/>
+      
+      
+    </div>
+>>>>>>> 376f186d2a23c3d67fc0f68504aef8f5eba81276
     </Router>
   );
 }

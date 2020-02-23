@@ -16,9 +16,8 @@ function home() {
       </div>
       <div className='buttons'>
         <Link className='start' to="/game">Start</Link>
-        <button className='logIn'>Log In</button>
-      </div>
-
+        <Link className='logIn'to="/logIn">Log In</Link>
+        </div>
 
     </div>
   );
