@@ -1,6 +1,5 @@
 import React from 'react';
 import 'pages/home.scss';
-import { link } from 'fs';
 import {Link } from 'react-router-dom'
 
 
@@ -18,6 +17,7 @@ function home () {
   );
   }
 
+ 
 
     export default home
 
