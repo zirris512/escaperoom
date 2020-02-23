@@ -1,5 +1,5 @@
 import React from 'react';
-import 'pages/Game.scss';
+import 'pages/game.scss';
 import Game from '../phaser/config';
 
 function game () {
