@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Game from "./pages/Game";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import Game from "./pages/game";
 import Register from "./pages/Register";
 import Welcome from "./pages/Welcome";
 import Layout from "./pages/Layout";
