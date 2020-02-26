@@ -20,6 +20,30 @@ class puzzle1 extends Phaser.Scene {
             this.scene.switch("room1");
         }, this);
 
+        this.initialTime = 0;
+
+        this.timeText = this.add.text(this.cameras.main.width/2, this.cameras.main.height/2, `${this.formatTime(this.initialTime)}`).setColor("#000");
+
+        this.gameTimer = this.time.addEvent({
+            delay: 1000,
+            callback: this.gameTimer,
+            callbackScope: this,
+            loop: true
+        });
+    }
+
+    formatTime(secs) {
+        let minutes = Math.floor(secs/60);
+        let seconds = secs%60;
+
+        seconds = seconds.toString().padStart(2,'0');
+        return `${minutes}:${seconds}`;
+    }
+
+    gameTimer() {
+        this.initialTime += 1;
+        this.timeText.setText(`${this.formatTime(this.initialTime)}`);
+        localStorage.setItem('currentTime', this.formatTime(this.initialTime));
     }
 }
 
