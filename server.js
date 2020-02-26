@@ -3,7 +3,6 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const session = require('express-session');
-const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 
 
@@ -58,10 +57,6 @@ mongoose
   .then(() => console.log('MongoDB Connected'))
   // eslint-disable-next-line no-console
   .catch((err) => console.log(err));
-
-// EJS
-app.use(expressLayouts);
-app.set('view engine', 'ejs');
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));

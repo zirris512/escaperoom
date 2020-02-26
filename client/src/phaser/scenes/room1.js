@@ -9,11 +9,11 @@ class room1 extends Phaser.Scene {
     create(){
         //definine objects
         this.background = this.add.image(this.cameras.main.displayWidth/2,this.cameras.main.displayHeight/2,"room");
-        this.openDoor = this.add.image(this.background.displayWidth/2, this.background.displayHeight/2 - 20, "openDoor");
+        this.openDoor = this.add.image(this.cameras.main.width/2, this.cameras.main.height/2 + 40, "openDoor");
         this.openDoor.visible = false;
-        this.door = this.add.image(this.background.displayWidth/2, this.background.displayHeight/2 - 20, "door");
-        this.arrowRight = this.add.image(this.background.displayWidth - 50, this.background.displayHeight/2, "arrowRight").setScale(0.25).setInteractive({ useHandCursor: true });
-        this.arrowLeft = this.add.image(50, this.background.displayHeight/2, "arrowLeft").setScale(0.25).setInteractive({ useHandCursor: true });
+        this.door = this.add.image(this.cameras.main.width/2, this.cameras.main.height/2 + 40, "door");
+        this.arrowRight = this.add.image(this.cameras.main.width - 50, this.cameras.main.height/2, "arrowRight").setScale(0.25).setInteractive({ useHandCursor: true });
+        this.arrowLeft = this.add.image(50, this.cameras.main.height/2, "arrowLeft").setScale(0.25).setInteractive({ useHandCursor: true });
 
         this.door.setInteractive();
         this.openDoor.setInteractive();
