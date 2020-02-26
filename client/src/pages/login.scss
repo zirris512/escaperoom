@@ -1,7 +1,23 @@
-
-.login{
-    background-image: url(../images/example-login.jpg);
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
+.login {
+    background: url(../images/prisoner.jpg) no-repeat center center fixed; 
+  background-size: 100%;
+  color: white;
+  width: 100vw;
+  height: 100vh;
 }
+
+h1{
+    color:white;
+
+
+}
+
+p{
+    color: black;
+}
+
+.card{
+    position: relative;
+}
+
+

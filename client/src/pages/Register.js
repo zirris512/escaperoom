@@ -26,12 +26,13 @@ function Register(props) {
   }
 
     return(
-        <div className="row mt-5">
+    
+        <div className="row mt-10">
     <div className="col-md-6 m-auto">
       <div className="card card-body">
-        <h1 className="text-center mb-3">
+        <h2 className="text-center mb-3">
           <i className="fas fa-user-plus"></i> Register
-        </h1>
+        </h2>
         
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -78,7 +79,7 @@ function Register(props) {
              ref={confirmPassword}
             />
           </div>
-          <button type="submit" className="btn btn-primary btn-block">
+          <button type="submit" className="btn btn-primary btn-block ">
             Register
           </button>
         </form>
@@ -86,8 +87,11 @@ function Register(props) {
       </div>
     </div>
   </div>
+ 
 
     )
+    
 }
+
 
 export default withRouter(Register);

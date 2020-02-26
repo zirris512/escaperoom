@@ -7,10 +7,11 @@ import {Link} from 'react-router-dom';
 function Login () {
     return (
         <div className='login'>
-           <div className="row mt-5">
+           <div className="row mt-10">
     <div className="col-md-6 m-auto">
       <div className="card card-body">
-        <h1 className="text-center mb-3"><i className="fas fa-sign-in-alt"></i>  Login</h1>
+        <h2 className="text-center mb-3">
+          <i className="fas fa-sign-in-alt"></i>  Login</h2>
       
         <form action="/users/login" method="POST">
           <div className="form-group">

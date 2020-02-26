@@ -15,7 +15,7 @@ function home() {
         <BounceInDiv><h1>ESCAPE</h1></BounceInDiv>
       </div>
       <div className='buttons'>
-        <Link className='start' to="/game">Start</Link>
+        <Link className='start' to="/register">Register</Link>
         <Link className='logIn'to="/logIn">Log In</Link>
         </div>
 
