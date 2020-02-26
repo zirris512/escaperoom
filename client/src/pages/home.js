@@ -8,7 +8,7 @@ function home () {
     <div className='homeScreen'>
         <h1>ESCAPE</h1>
         <div className='buttons'>
-        <Link className='start' to="/game">Start</Link>
+        <Link className='start' to="/register">Register</Link>
         <Link className='logIn'to="/logIn">Log In</Link>
         </div>
 
