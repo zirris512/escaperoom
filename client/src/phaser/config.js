@@ -8,8 +8,8 @@ import title from "./scenes/title";
 
 const config = {
     type: Phaser.AUTO,
-    width: 1100,
-    height: 700,
+    width: window.innerWidth,
+    height: window.innerHeight,
     scene: [boot, title, room1, puzzle1, puzzle2, puzzle3],
     parent: document.getElementById("game")
 };
