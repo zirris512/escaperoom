@@ -17,10 +17,16 @@ class boot extends Phaser.Scene {
 
     create() {
         this.initialTime = 0;
+        this.puzzle1Win = false;
+        this.puzzle2Win = false;
+        this.puzzle3Win = false;
 
         this.scene.start("title", {
-            time: this.initialTime
-        });
+            time: this.initialTime,
+            puzzle1Win: this.puzzle1Win,
+            puzzle2Win: this.puzzle2Win,
+            puzzle3Win: this.puzzle3Win
+    });
     }
 }
 

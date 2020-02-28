@@ -7,41 +7,35 @@ class room1 extends Phaser.Scene {
 
     init(data) {
         this.currentTime = data.time;
-        console.log()
+        this.puzzle1Complete = data.puzzle1Win;
+        this.puzzle2Complete = data.puzzle2Win;
+        this.puzzle3Complete = data.puzzle3Win;
     }
 
     create(){
         //definine objects
         this.background = this.add.image(this.cameras.main.displayWidth/2,this.cameras.main.displayHeight/2,"room");
-        this.openDoor = this.add.image(this.cameras.main.width/2, this.cameras.main.height/2 + 40, "openDoor");
+        this.openDoor = this.add.image(this.cameras.main.width/2, this.cameras.main.height/2 + 40, "openDoor").setInteractive();
         this.openDoor.visible = false;
-        this.door = this.add.image(this.cameras.main.width/2, this.cameras.main.height/2 + 40, "door");
+        this.door = this.add.image(this.cameras.main.width/2, this.cameras.main.height/2 + 40, "door").setInteractive();
         this.arrowRight = this.add.image(this.cameras.main.width - 50, this.cameras.main.height/2, "arrowRight").setScale(0.25).setInteractive({ useHandCursor: true });
         this.arrowLeft = this.add.image(50, this.cameras.main.height/2, "arrowLeft").setScale(0.25).setInteractive({ useHandCursor: true });
 
-        this.door.setInteractive();
-        this.openDoor.setInteractive();
-        this.door.on("pointerdown", function() {
-            if (this.door.visible) {
-                return (this.door.visible = false, this.openDoor.visible = true);
-            }
-        }, this);
-
-        this.openDoor.on("pointerdown", function() {
-            if (this.openDoor.visible) {
-                return (this.openDoor.visible = false, this.door.visible = true);
-            }
-        }, this);
-
         this.arrowRight.on("pointerdown", function() {
             this.scene.start("puzzle1", {
-                time: this.currentTime
+                time: this.currentTime,
+                puzzle1Win: this.puzzle1Complete,
+                puzzle2Win: this.puzzle2Complete,
+                puzzle3Win: this.puzzle3Complete
             });
         }, this);
         
         this.arrowLeft.on("pointerdown", function() {
             this.scene.start("puzzle3", {
-                time: this.currentTime
+                time: this.currentTime,
+                puzzle1Win: this.puzzle1Complete,
+                puzzle2Win: this.puzzle2Complete,
+                puzzle3Win: this.puzzle3Complete
             });
         }, this);
 
@@ -53,6 +47,18 @@ class room1 extends Phaser.Scene {
             callbackScope: this,
             loop: true
         });
+
+        this.openDoor.on('pointerdown', function() {
+            if(this.openDoor.visible) {
+                console.log("You win!");
+            }
+        }, this)
+    }
+
+    update() {
+        if(this.puzzle1Complete && this.puzzle2Complete && this.puzzle3Complete) {
+            return(this.openDoor.visible = true, this.door.visible = false);
+        }
     }
 
     formatTime(secs) {

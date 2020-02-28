@@ -7,6 +7,9 @@ class puzzle3 extends Phaser.Scene {
 
     init(data) {
         this.currentTime = data.time;
+        this.puzzle1Complete = data.puzzle1Win;
+        this.puzzle2Complete = data.puzzle2Win;
+        this.puzzle3Complete = data.puzzle3Win;
     }
 
     create() {
@@ -18,6 +21,12 @@ class puzzle3 extends Phaser.Scene {
 
         this.timeText = this.add.text(1100, 50, `${this.formatTime(this.currentTime)}`).setColor("#000").setScale(1.5);
 
+        const spaceKey = this.input.keyboard.addKey('SPACE');
+
+        spaceKey.on('down', function(event) {
+            return(this.puzzle3Win = true);
+        }, this);
+
         this.gameTimer = this.time.addEvent({
             delay: 1000,
             callback: this.updateTimer,
@@ -27,13 +36,19 @@ class puzzle3 extends Phaser.Scene {
 
         this.arrowRight.on("pointerdown", function() {
             this.scene.start("room1", {
-                time: this.currentTime
+                time: this.currentTime,
+                puzzle1Win: this.puzzle1Complete,
+                puzzle2Win: this.puzzle2Complete,
+                puzzle3Win: this.puzzle3Win
             });
         }, this);
         
         this.arrowLeft.on("pointerdown", function() {
             this.scene.start("puzzle2", {
-                time: this.currentTime
+                time: this.currentTime,
+                puzzle1Win: this.puzzle1Complete,
+                puzzle2Win: this.puzzle2Complete,
+                puzzle3Win: this.puzzle3Win
             });
         }, this);
 
