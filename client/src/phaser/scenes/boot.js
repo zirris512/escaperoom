@@ -25,14 +25,19 @@ class boot extends Phaser.Scene {
         this.load.image("nightStand", images.nightStand);
     }
 
+    create() {
+        this.initialTime = 0;
+        this.puzzle1Win = false;
+        this.puzzle2Win = false;
+        this.puzzle3Win = false;
 
-  create() {
-    this.initialTime = 0;
-
-    this.scene.start("title", {
-      time: this.initialTime
+        this.scene.start("title", {
+            time: this.initialTime,
+            puzzle1Win: this.puzzle1Win,
+            puzzle2Win: this.puzzle2Win,
+            puzzle3Win: this.puzzle3Win
     });
-  }
+    }
 }
 
 export default boot;

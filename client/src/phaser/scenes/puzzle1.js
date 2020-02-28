@@ -13,6 +13,13 @@ class PingPong extends Phaser.Scene {
       ai: 0
     };
   }
+  
+  init(data) {
+      this.currentTime = data.time;
+      this.puzzle1Complete = data.puzzle1Win;
+      this.puzzle2Complete = data.puzzle2Win;
+      this.puzzle3Complete = data.puzzle3Win;
+  }
 
   preload() {
     this.load.image("paddle", "/assets/images/paddle.png");
@@ -152,18 +159,32 @@ class PingPong extends Phaser.Scene {
 
         this.arrowRight = this.add.image(this.cameras.main.width - 50, this.cameras.main.height/2, "arrowRight").setScale(0.25).setInteractive({ useHandCursor: true });
         this.arrowLeft = this.add.image(50, this.cameras.main.height/2, "arrowLeft").setScale(0.25).setInteractive({ useHandCursor: true });
-    
+//         this.thisBed = this.add.image(800,550,"thisBed").setScale(1.40);
+//         this.allMight = this.add.image(800,300, "allMight").setScale(.35);
+//         this.wallShelf = this.add.image(300,300,"wallShelf").setScale(0.55);
+//         this.add.text(this.background.displayWidth/2, 20, "Puzzle 1 goes here...");
 
+        const spaceKey = this.input.keyboard.addKey('SPACE');
+
+        spaceKey.on('down', function(event) {
+            return(this.puzzle1Win = true);
+        }, this);
 
         this.arrowRight.on("pointerdown", function() {
             this.scene.start("puzzle2", {
-                time: this.currentTime
+                time: this.currentTime,
+                puzzle1Win: this.puzzle1Win,
+                puzzle2Win: this.puzzle2Complete,
+                puzzle3Win: this.puzzle3Complete
             });
         }, this);
         
         this.arrowLeft.on("pointerdown", function() {
             this.scene.start("room1", {
-                time: this.currentTime
+                time: this.currentTime,
+                puzzle1Win: this.puzzle1Win,
+                puzzle2Win: this.puzzle2Complete,
+                puzzle3Win: this.puzzle3Complete
             });
         }, this);
 
