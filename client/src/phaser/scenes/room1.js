@@ -1,10 +1,14 @@
 import Phaser from "phaser";
-import images from "../assets/images.js";
 
 class room1 extends Phaser.Scene {
     constructor() {
         super({ key: "room1" });
     };
+
+    init(data) {
+        this.currentTime = data.time;
+        console.log()
+    }
 
     create(){
         //definine objects
@@ -33,12 +37,39 @@ class room1 extends Phaser.Scene {
         }, this);
 
         this.arrowRight.on("pointerdown", function() {
-            this.scene.switch("puzzle1");
+            this.scene.start("puzzle1", {
+                time: this.currentTime
+            });
         }, this);
         
         this.arrowLeft.on("pointerdown", function() {
-            this.scene.switch("puzzle3");
+            this.scene.start("puzzle3", {
+                time: this.currentTime
+            });
         }, this);
+
+        this.timeText = this.add.text(1100, 50, `${this.formatTime(this.currentTime)}`).setColor("#000").setScale(1.5);
+
+        this.gameTimer = this.time.addEvent({
+            delay: 1000,
+            callback: this.updateTimer,
+            callbackScope: this,
+            loop: true
+        });
+    }
+
+    formatTime(secs) {
+        let minutes = Math.floor(secs/60);
+        let seconds = secs%60;
+
+        seconds = seconds.toString().padStart(2,'0');
+        return `${minutes}:${seconds}`;
+    }
+
+    updateTimer() {
+        this.currentTime += 1;
+        this.timeText.setText(`${this.formatTime(this.currentTime)}`);
+        localStorage.setItem('currentTime', this.formatTime(this.currentTime));
     }
 }
 

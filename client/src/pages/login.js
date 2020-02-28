@@ -4,6 +4,11 @@ import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 
+const buttonSound = new Audio('/assets/audio/button.mp3')
+
+  function audio() {
+    buttonSound.play();
+  }
 
 function Login (props) {
   const email = useRef('');
@@ -52,10 +57,10 @@ function Login (props) {
               ref={password}
             />
           </div>
-          <button type="submit" className="btn btn-primary btn-block">Login</button>
+          <button onClick={audio} type="submit" className="btn btn-primary btn-block">Login</button>
         </form>
         <p className="lead mt-4">
-          No Account? <Link to="/register">Register</Link>
+          No Account? <Link onClick={audio} to="/register">Register</Link>
         </p>
       </div>
     </div>
@@ -69,5 +74,5 @@ function Login (props) {
   }
 
 
-    export default withRouter (Login);
 
+    export default withRouter (Login);
