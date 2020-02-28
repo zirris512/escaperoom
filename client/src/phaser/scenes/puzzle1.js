@@ -13,11 +13,15 @@ class puzzle1 extends Phaser.Scene {
         this.add.text(this.background.displayWidth/2, 20, "Puzzle 1 goes here...");
 
         this.arrowRight.on("pointerdown", function() {
-            this.scene.switch("puzzle2");
+            this.scene.launch("puzzle2", {
+                time: this.initialTime,
+                formatTime: this.formatTime,
+                gameTimer: this.gameTimer
+            });
         }, this);
         
         this.arrowLeft.on("pointerdown", function() {
-            this.scene.switch("room1");
+            this.scene.launch("room1");
         }, this);
 
         this.initialTime = 0;

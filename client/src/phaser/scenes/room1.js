@@ -1,5 +1,4 @@
 import Phaser from "phaser";
-import images from "../assets/images.js";
 
 class room1 extends Phaser.Scene {
     constructor() {
@@ -30,11 +29,11 @@ class room1 extends Phaser.Scene {
         }, this);
 
         this.arrowRight.on("pointerdown", function() {
-            this.scene.switch("puzzle1");
+            this.scene.launch("puzzle1");
         }, this);
         
         this.arrowLeft.on("pointerdown", function() {
-            this.scene.switch("puzzle3");
+            this.scene.launch("puzzle3");
         }, this);
     }
 }
