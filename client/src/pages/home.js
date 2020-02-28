@@ -8,6 +8,7 @@ const BounceInDiv = styled.div`
   animation: infinite 12s ${BounceInAnimation};
 `;
 
+
 function home() {
   return (
     <div className='homeScreen'>
