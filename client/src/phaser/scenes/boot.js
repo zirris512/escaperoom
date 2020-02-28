@@ -2,9 +2,10 @@ import Phaser from "phaser";
 import images from "../assets/images.js";
 
 class boot extends Phaser.Scene {
-    constructor() {
-        super({ key: "boot" });
-    };
+  constructor() {
+    super({ key: "boot" });
+  }
+
 
     preload(){
         //load ressources

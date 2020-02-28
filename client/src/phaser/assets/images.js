@@ -3,6 +3,10 @@ import openDoor from "./images/open_door.png";
 import door from "./images/door.png";
 import arrowRight from "./images/arrowright.png";
 import arrowLeft from "./images/arrowleft.png";
+// import ball from "./images/ball.png";
+// import wall from "./images/invisible-wall.png";
+// import paddle from "./images/paddle.png";
+
 
 
 
@@ -20,5 +24,6 @@ import thisTv from "./images/thisTv.png";
 import nightStand from "./images/nightStand.png";
 
 const images = {room, door, openDoor, arrowRight, arrowLeft,finalDesk,wallShelf,bookShelf,anime,soloShelf, thisBed,allMight,thisTv,nightStand};
+
 
 export default images;
