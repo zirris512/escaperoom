@@ -7,8 +7,6 @@ class puzzle2 extends Phaser.Scene {
 
     init(data) {
         this.currentTime = data.time;
-        this.formatTime = data.formatTime;
-        this.updateTimer = data.gameTimer;
     }
 
     create() {
@@ -18,7 +16,7 @@ class puzzle2 extends Phaser.Scene {
 
         this.add.text(this.background.displayWidth/2, 20, "Puzzle 2 goes here...");
 
-        this.timeText = this.add.text(this.cameras.main.width/2, this.cameras.main.height/2, `${this.formatTime(this.currentTime)}`).setColor("#000");
+        this.timeText = this.add.text(1100, 50, `${this.formatTime(this.currentTime)}`).setColor("#000").setScale(1.5);
 
         this.gameTimer = this.time.addEvent({
             delay: 1000,
@@ -28,14 +26,33 @@ class puzzle2 extends Phaser.Scene {
         });
 
         this.arrowRight.on("pointerdown", function() {
-            this.scene.launch("puzzle3");
+            this.scene.start("puzzle3", {
+                time: this.currentTime
+            });
         }, this);
         
         this.arrowLeft.on("pointerdown", function() {
-            this.scene.launch("puzzle1");
+            this.scene.start("puzzle1", {
+                time: this.currentTime
+            });
         }, this);
 
     }
+
+    formatTime(secs) {
+        let minutes = Math.floor(secs/60);
+        let seconds = secs%60;
+
+        seconds = seconds.toString().padStart(2,'0');
+        return `${minutes}:${seconds}`;
+    }
+
+    updateTimer() {
+        this.currentTime += 1;
+        this.timeText.setText(`${this.formatTime(this.currentTime)}`);
+        localStorage.setItem('currentTime', this.formatTime(this.currentTime));
+    }
+
 }
 
 export default puzzle2;

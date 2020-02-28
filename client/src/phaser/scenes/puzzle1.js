@@ -5,6 +5,10 @@ class puzzle1 extends Phaser.Scene {
         super({ key: "puzzle1" });
     };
 
+    init(data) {
+        this.currentTime = data.time;
+    }
+
     create() {
         this.background = this.add.image(this.cameras.main.displayWidth/2,this.cameras.main.displayHeight/2,"room");
         this.arrowRight = this.add.image(this.cameras.main.width - 50, this.cameras.main.height/2, "arrowRight").setScale(0.25).setInteractive({ useHandCursor: true });
@@ -13,24 +17,22 @@ class puzzle1 extends Phaser.Scene {
         this.add.text(this.background.displayWidth/2, 20, "Puzzle 1 goes here...");
 
         this.arrowRight.on("pointerdown", function() {
-            this.scene.launch("puzzle2", {
-                time: this.initialTime,
-                formatTime: this.formatTime,
-                gameTimer: this.gameTimer
+            this.scene.start("puzzle2", {
+                time: this.currentTime
             });
         }, this);
         
         this.arrowLeft.on("pointerdown", function() {
-            this.scene.launch("room1");
+            this.scene.start("room1", {
+                time: this.currentTime
+            });
         }, this);
 
-        this.initialTime = 0;
-
-        this.timeText = this.add.text(this.cameras.main.width/2, this.cameras.main.height/2, `${this.formatTime(this.initialTime)}`).setColor("#000");
+        this.timeText = this.add.text(1100, 50, `${this.formatTime(this.currentTime)}`).setColor("#000").setScale(1.5);
 
         this.gameTimer = this.time.addEvent({
             delay: 1000,
-            callback: this.gameTimer,
+            callback: this.updateTimer,
             callbackScope: this,
             loop: true
         });
@@ -44,10 +46,10 @@ class puzzle1 extends Phaser.Scene {
         return `${minutes}:${seconds}`;
     }
 
-    gameTimer() {
-        this.initialTime += 1;
-        this.timeText.setText(`${this.formatTime(this.initialTime)}`);
-        localStorage.setItem('currentTime', this.formatTime(this.initialTime));
+    updateTimer() {
+        this.currentTime += 1;
+        this.timeText.setText(`${this.formatTime(this.currentTime)}`);
+        localStorage.setItem('currentTime', this.formatTime(this.currentTime));
     }
 }
 

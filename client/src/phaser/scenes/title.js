@@ -5,6 +5,10 @@ class Title extends Phaser.Scene {
         super({ key: "title" });
     };
 
+    init(data) {
+        this.currentTime = data.time;
+    }
+
     create() {
         this.background = this.add.image(this.cameras.main.displayWidth/2,this.cameras.main.displayHeight/2,"room").setAlpha(0.5);
         this.door = this.add.image(this.cameras.main.width/2, this.cameras.main.height/2 + 40, "door").setAlpha(0.75);
@@ -24,7 +28,9 @@ class Title extends Phaser.Scene {
 
     btnClick() {
         this.startbtn.setStyle({ fill: "#0F0"});
-        this.scene.start("room1");
+        this.scene.start("room1", {
+            time: this.currentTime
+        });
     };
 
     restState() {
