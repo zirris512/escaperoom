@@ -19,7 +19,7 @@ function Register(props) {
     }
     
     axios.post('/users/register', data).then(() => {
-      props.history.push('/dashboard');
+      props.history.push('/game');
     }).catch((e) => {
       console.log('There was an error', e);
     });
