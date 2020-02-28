@@ -13,6 +13,15 @@ class boot extends Phaser.Scene {
         this.load.image("openDoor", images.openDoor);
         this.load.image("arrowRight", images.arrowRight);
         this.load.image("arrowLeft", images.arrowLeft);
+        this.load.image("finalDesk", images.finalDesk);
+        this.load.image("wallShelf",images.wallShelf);
+        this.load.image("bookShelf",images.bookShelf);
+        this.load.image("anime",images.anime);
+        this.load.image("soloShelf", images.soloShelf);
+        this.load.image("thisBed", images.thisBed);
+        this.load.image("allMight", images.allMight);
+        this.load.image("thisTv",images.thisTv);
+        this.load.image("nightStand", images.nightStand);
     }
 
     create() {

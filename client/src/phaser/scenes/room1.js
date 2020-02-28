@@ -18,7 +18,10 @@ class room1 extends Phaser.Scene {
         this.door = this.add.image(this.cameras.main.width/2, this.cameras.main.height/2 + 40, "door");
         this.arrowRight = this.add.image(this.cameras.main.width - 50, this.cameras.main.height/2, "arrowRight").setScale(0.25).setInteractive({ useHandCursor: true });
         this.arrowLeft = this.add.image(50, this.cameras.main.height/2, "arrowLeft").setScale(0.25).setInteractive({ useHandCursor: true });
-
+        this.wallShelf = this.add.image(1000,300,"wallShelf").setScale(0.55);
+        this.bookShelf = this.add.image(550,450, "bookShelf").setScale(1.50);
+        this.anime = this.add.image(550,200, "anime").setScale(.70);
+        
         this.door.setInteractive();
         this.openDoor.setInteractive();
         this.door.on("pointerdown", function() {
