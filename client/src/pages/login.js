@@ -3,6 +3,11 @@ import '../pages/login.scss';
 import {Link} from 'react-router-dom';
 
 
+const buttonSound = new Audio('/assets/audio/button.mp3')
+
+  function audio() {
+    buttonSound.play();
+  }
 
 function Login () {
     return (
@@ -34,10 +39,10 @@ function Login () {
               placeholder="Enter Password"
             />
           </div>
-          <button type="submit" className="btn btn-primary btn-block">Login</button>
+          <button onClick={audio} type="submit" className="btn btn-primary btn-block">Login</button>
         </form>
         <p className="lead mt-4">
-          No Account? <Link to="/register">Register</Link>
+          No Account? <Link onClick={audio} to="/register">Register</Link>
         </p>
       </div>
     </div>
@@ -52,4 +57,3 @@ function Login () {
 
 
     export default Login
-

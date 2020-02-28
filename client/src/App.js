@@ -15,6 +15,8 @@ import Logout from './pages/Logout';
 function App() {
   return (
     <Router>
+            <audio src="/assets/audio/homescreen.mp3" loop autoPlay></audio>
+
       <AnimatedSwitch
         atEnter={{ opacity: 0 }}
         atLeave={{ opacity: 0 }}
@@ -32,7 +34,10 @@ function App() {
         <Route exact path="/dashboard" component={Dashboard} />
 
       </AnimatedSwitch>
+      
     </Router>
+
+    
   );
 }
 

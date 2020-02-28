@@ -3,6 +3,13 @@ import '../pages/Register.scss'
 import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
+  
+  const buttonSound = new Audio('/assets/audio/button.mp3')
+
+  function audio() {
+    buttonSound.play();
+  }
+
 function Register(props) {
   const username = useRef('');
   const email = useRef('');
@@ -83,7 +90,7 @@ function Register(props) {
             Register
           </button>
         </form>
-        <p className="lead mt-4">Have An Account? <Link to="/login">Login</Link></p>
+        <p className="lead mt-4">Have An Account? <Link onClick={audio} to="/login">Login</Link></p>
       </div>
     </div>
   </div>

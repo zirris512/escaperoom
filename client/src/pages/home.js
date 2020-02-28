@@ -10,19 +10,29 @@ const BounceInDiv = styled.div`
 
 
 function home() {
+  
+  const buttonSound = new Audio('/assets/audio/button.mp3')
+
+  function audio() {
+    buttonSound.play();
+  }
+
   return (
+    
     <div className='homeScreen'>
       <div>
         <BounceInDiv><h1>ESCAPE</h1></BounceInDiv>
       </div>
       <div className='buttons'>
-        <Link className='start' to="/register">Register</Link>
-        <Link className='logIn'to="/logIn">Log In</Link>
+        <Link onClick={audio} className='start' to="/register">Register</Link>
+        <Link onClick={audio} className='logIn'to="/logIn">Log In</Link>
         </div>
 
     </div>
   );
+  
 }
+
 
 
 export default home
