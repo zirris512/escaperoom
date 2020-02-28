@@ -1,4 +1,6 @@
+// import Phaser, { GameObjects } from "phaser";
 import Phaser from "phaser";
+// import images from "../assets/images.js";
 
 const speed = 500;
 
@@ -15,9 +17,12 @@ class PingPong extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("paddle", "/assets/images/paddle.png");
-    this.load.image("ball", "/assets/images/ball.png");
-    this.load.image("wall", "/assets/images/wall.png");
+    // this.load.image("paddle", images.paddle);
+    // this.load.image("ball", images.ball);
+    // this.load.image("wall", images.wall);
+    this.load.image("paddle", "assets/images/paddle.png");
+    this.load.image("ball", "assets/images/ball.png");
+    this.load.image("wall", "assets/images/wall.png");
     console.log(this);
   }
   create() {
@@ -128,6 +133,7 @@ class PingPong extends Phaser.Scene {
     this.physics.collide(this.walls, this.ball);
 
     // Reset velocity at each frame
+    console.log(this.playerPaddle);
     this.playerPaddle.body.velocity.y = 0;
 
     // Start Game pressing space

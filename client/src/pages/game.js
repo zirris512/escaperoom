@@ -1,15 +1,12 @@
-import React from 'react';
-import 'pages/game.scss';
-import Game from '../phaser/config';
+import React from "react";
+import "pages/game.scss";
+import Game from "../phaser/config";
 
-
-function game () {
-    return (
-        <div className='gamescreen'>
-            <div id="game"></div>
-            
-        </div>
-    )
+function game() {
+  return (
+    <div className="gamescreen">
+      <div id="game"></div>
+    </div>
+  );
 }
-export default game
-
+export default game;
