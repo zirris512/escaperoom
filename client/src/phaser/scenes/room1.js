@@ -10,6 +10,7 @@ class room1 extends Phaser.Scene {
     console.log();
   }
 
+
   create() {
     //definine objects
     this.background = this.add.image(
@@ -52,6 +53,10 @@ class room1 extends Phaser.Scene {
       },
       this
     );
+        this.wallShelf = this.add.image(1000,300,"wallShelf").setScale(0.55);
+        this.bookShelf = this.add.image(550,450, "bookShelf").setScale(1.50);
+        this.anime = this.add.image(550,200, "anime").setScale(.70);
+
 
     this.openDoor.on(
       "pointerdown",

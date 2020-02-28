@@ -2,6 +2,7 @@ import React from "react";
 import "pages/game.scss";
 import Game from "../phaser/config";
 
+
 function game() {
   return (
     <div className="gamescreen">
@@ -10,3 +11,4 @@ function game() {
   );
 }
 export default game;
+

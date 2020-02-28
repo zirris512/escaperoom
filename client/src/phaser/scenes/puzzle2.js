@@ -9,6 +9,7 @@ class puzzle2 extends Phaser.Scene {
     this.currentTime = data.time;
   }
 
+
   create() {
     this.background = this.add.image(
       this.cameras.main.displayWidth / 2,
@@ -27,6 +28,12 @@ class puzzle2 extends Phaser.Scene {
       .image(50, this.cameras.main.height / 2, "arrowLeft")
       .setScale(0.25)
       .setInteractive({ useHandCursor: true });
+
+
+        this.desk=this.add.image(800,500,"finalDesk"  ).setScale(0.45)
+        
+
+
 
     this.add.text(
       this.background.displayWidth / 2,

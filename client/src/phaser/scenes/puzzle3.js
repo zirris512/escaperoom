@@ -9,6 +9,7 @@ class puzzle3 extends Phaser.Scene {
     this.currentTime = data.time;
   }
 
+
   create() {
     this.background = this.add.image(
       this.cameras.main.displayWidth / 2,
@@ -38,6 +39,11 @@ class puzzle3 extends Phaser.Scene {
       .text(1100, 50, `${this.formatTime(this.currentTime)}`)
       .setColor("#000")
       .setScale(1.5);
+
+
+        this.thisTv = this.add.image(750,500,"thisTv").setScale(1.8);
+        this.nightStand = this.add.image(1000,550, "nightStand").setScale(.70);
+
 
     this.gameTimer = this.time.addEvent({
       delay: 1000,

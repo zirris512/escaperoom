@@ -149,6 +149,33 @@ class PingPong extends Phaser.Scene {
     } else {
       //  Stand still
       // playerPaddle.animations.stop();
+
+        this.arrowRight = this.add.image(this.cameras.main.width - 50, this.cameras.main.height/2, "arrowRight").setScale(0.25).setInteractive({ useHandCursor: true });
+        this.arrowLeft = this.add.image(50, this.cameras.main.height/2, "arrowLeft").setScale(0.25).setInteractive({ useHandCursor: true });
+    
+
+
+        this.arrowRight.on("pointerdown", function() {
+            this.scene.start("puzzle2", {
+                time: this.currentTime
+            });
+        }, this);
+        
+        this.arrowLeft.on("pointerdown", function() {
+            this.scene.start("room1", {
+                time: this.currentTime
+            });
+        }, this);
+
+        this.timeText = this.add.text(1100, 50, `${this.formatTime(this.currentTime)}`).setColor("#000").setScale(1.5);
+
+        this.gameTimer = this.time.addEvent({
+            delay: 1000,
+            callback: this.updateTimer,
+            callbackScope: this,
+            loop: true
+        });
+
     }
 
     // simple AI for AI paddle
