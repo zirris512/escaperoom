@@ -125,6 +125,46 @@ class PingPong extends Phaser.Scene {
       fill: "#fff"
     });
     this.aiScoreText.setScale(0.5, 0.5);
+
+    this.arrowRight = this.add.image(this.cameras.main.width - 50, this.cameras.main.height/2, "arrowRight").setScale(0.25).setInteractive({ useHandCursor: true });
+    this.arrowLeft = this.add.image(50, this.cameras.main.height/2, "arrowLeft").setScale(0.25).setInteractive({ useHandCursor: true });
+//         this.thisBed = this.add.image(800,550,"thisBed").setScale(1.40);
+//         this.allMight = this.add.image(800,300, "allMight").setScale(.35);
+//         this.wallShelf = this.add.image(300,300,"wallShelf").setScale(0.55);
+//         this.add.text(this.background.displayWidth/2, 20, "Puzzle 1 goes here...");
+
+    const spaceKey = this.input.keyboard.addKey('SPACE');
+
+    spaceKey.on('down', function(event) {
+        return(this.puzzle1Win = true);
+    }, this);
+
+    this.arrowRight.on("pointerdown", function() {
+        this.scene.start("puzzle2", {
+            time: this.currentTime,
+            puzzle1Win: this.puzzle1Win,
+            puzzle2Win: this.puzzle2Complete,
+            puzzle3Win: this.puzzle3Complete
+        });
+    }, this);
+    
+    this.arrowLeft.on("pointerdown", function() {
+        this.scene.start("room1", {
+            time: this.currentTime,
+            puzzle1Win: this.puzzle1Win,
+            puzzle2Win: this.puzzle2Complete,
+            puzzle3Win: this.puzzle3Complete
+        });
+    }, this);
+
+    this.timeText = this.add.text(1100, 50, `${this.formatTime(this.currentTime)}`).setColor("#000").setScale(1.5);
+
+    this.gameTimer = this.time.addEvent({
+        delay: 1000,
+        callback: this.updateTimer,
+        callbackScope: this,
+        loop: true
+    });
   }
   update() {
     if (this.gameOver) return;
@@ -156,47 +196,6 @@ class PingPong extends Phaser.Scene {
     } else {
       //  Stand still
       // playerPaddle.animations.stop();
-
-        this.arrowRight = this.add.image(this.cameras.main.width - 50, this.cameras.main.height/2, "arrowRight").setScale(0.25).setInteractive({ useHandCursor: true });
-        this.arrowLeft = this.add.image(50, this.cameras.main.height/2, "arrowLeft").setScale(0.25).setInteractive({ useHandCursor: true });
-//         this.thisBed = this.add.image(800,550,"thisBed").setScale(1.40);
-//         this.allMight = this.add.image(800,300, "allMight").setScale(.35);
-//         this.wallShelf = this.add.image(300,300,"wallShelf").setScale(0.55);
-//         this.add.text(this.background.displayWidth/2, 20, "Puzzle 1 goes here...");
-
-        const spaceKey = this.input.keyboard.addKey('SPACE');
-
-        spaceKey.on('down', function(event) {
-            return(this.puzzle1Win = true);
-        }, this);
-
-        this.arrowRight.on("pointerdown", function() {
-            this.scene.start("puzzle2", {
-                time: this.currentTime,
-                puzzle1Win: this.puzzle1Win,
-                puzzle2Win: this.puzzle2Complete,
-                puzzle3Win: this.puzzle3Complete
-            });
-        }, this);
-        
-        this.arrowLeft.on("pointerdown", function() {
-            this.scene.start("room1", {
-                time: this.currentTime,
-                puzzle1Win: this.puzzle1Win,
-                puzzle2Win: this.puzzle2Complete,
-                puzzle3Win: this.puzzle3Complete
-            });
-        }, this);
-
-        this.timeText = this.add.text(1100, 50, `${this.formatTime(this.currentTime)}`).setColor("#000").setScale(1.5);
-
-        this.gameTimer = this.time.addEvent({
-            delay: 1000,
-            callback: this.updateTimer,
-            callbackScope: this,
-            loop: true
-        });
-
     }
 
     // simple AI for AI paddle
@@ -260,6 +259,20 @@ class PingPong extends Phaser.Scene {
     this.playerPaddle.reset(20, (this.world.height - 256) / 2);
     this.playerPaddle.body.velocity.x = 0;
     this.playerPaddle.body.velocity.y = 0;
+  }
+
+  formatTime(secs) {
+    let minutes = Math.floor(secs/60);
+    let seconds = secs%60;
+
+    seconds = seconds.toString().padStart(2,'0');
+    return `${minutes}:${seconds}`;
+  }
+
+  updateTimer() {
+      this.currentTime += 1;
+      this.timeText.setText(`${this.formatTime(this.currentTime)}`);
+      localStorage.setItem('currentTime', this.formatTime(this.currentTime));
   }
 }
 
