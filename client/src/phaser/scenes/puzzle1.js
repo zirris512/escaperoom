@@ -25,10 +25,8 @@ class PingPong extends Phaser.Scene {
     this.load.image("paddle", "/assets/images/paddle.png");
     this.load.image("ball", "/assets/images/ball.png");
     this.load.image("wall", "/assets/images/wall.png");
-    console.log(this);
   }
   create() {
-    console.log(this);
     // Two invisible walls for up and down
     this.walls = this.physics.add.group([], {
       immovable: true
@@ -133,11 +131,11 @@ class PingPong extends Phaser.Scene {
 //         this.wallShelf = this.add.image(300,300,"wallShelf").setScale(0.55);
 //         this.add.text(this.background.displayWidth/2, 20, "Puzzle 1 goes here...");
 
-    const spaceKey = this.input.keyboard.addKey('SPACE');
+    // const spaceKey = this.input.keyboard.addKey('SPACE');
 
-    spaceKey.on('down', function(event) {
-        return(this.puzzle1Win = true);
-    }, this);
+    // spaceKey.on('down', function(event) {
+    //     return(this.puzzle1Win = true);
+    // }, this);
 
     this.arrowRight.on("pointerdown", function() {
         this.scene.start("puzzle2", {
@@ -157,7 +155,7 @@ class PingPong extends Phaser.Scene {
         });
     }, this);
 
-    this.timeText = this.add.text(1100, 50, `${this.formatTime(this.currentTime)}`).setColor("#000").setScale(1.5);
+    this.timeText = this.add.text(1100, 50, `${this.formatTime(this.currentTime)}`).setColor("#FFF").setScale(1.5);
 
     this.gameTimer = this.time.addEvent({
         delay: 1000,
@@ -166,6 +164,7 @@ class PingPong extends Phaser.Scene {
         loop: true
     });
   }
+
   update() {
     if (this.gameOver) return;
     // Collision between ball and paddles
@@ -184,7 +183,7 @@ class PingPong extends Phaser.Scene {
       this.ball.body.velocity.y === 0
     ) {
       this.setVelocity(this.ball);
-      this.helpText.destroy();
+      this.helpText.destroy(true);
     }
 
     if (this.cursors.up.isDown) {
@@ -203,6 +202,7 @@ class PingPong extends Phaser.Scene {
     this.aiPaddle.body.maxVelocity.y =
       Math.abs(this.ball.body.velocity.y) * 0.77;
   }
+
   updateScore() {
     //Point system increase
     if (this.ball.body.velocity.x > 0) {
