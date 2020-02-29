@@ -132,11 +132,11 @@ class PingPong extends Phaser.Scene {
         this.wallShelf = this.add.image(300,300,"wallShelf").setScale(0.55);
         this.add.text(this.background.displayWidth/2, 20, "Puzzle 1 goes here...");
 
-    const spaceKey = this.input.keyboard.addKey('SPACE');
+    // const spaceKey = this.input.keyboard.addKey('SPACE');
 
-    spaceKey.on('down', function(event) {
-        return(this.puzzle1Win = true);
-    }, this);
+    // spaceKey.on('down', function(event) {
+    //     return(this.puzzle1Win = true);
+    // }, this);
 
     this.arrowRight.on("pointerdown", function() {
         this.scene.start("puzzle2", {
@@ -156,7 +156,7 @@ class PingPong extends Phaser.Scene {
         });
     }, this);
 
-    this.timeText = this.add.text(1100, 50, `${this.formatTime(this.currentTime)}`).setColor("#000").setScale(1.5);
+    this.timeText = this.add.text(1100, 50, `${this.formatTime(this.currentTime)}`).setColor("#FFF").setScale(1.5);
 
     this.gameTimer = this.time.addEvent({
         delay: 1000,
