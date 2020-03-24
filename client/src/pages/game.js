@@ -5,9 +5,7 @@ import Game from "../phaser/config";
 
 function game() {
   return (
-    <div className="gamescreen">
-      <div id="game"></div>
-    </div>
+    <Game />
   );
 }
 export default game;

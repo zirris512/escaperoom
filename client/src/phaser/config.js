@@ -1,3 +1,4 @@
+import React from "react";
 import Phaser from "phaser";
 import room1 from "./scenes/room1";
 import PingPong from "./scenes/puzzle1";
@@ -5,6 +6,7 @@ import puzzle2 from "./scenes/puzzle2";
 import puzzle3 from "./scenes/puzzle3";
 import boot from "./scenes/boot";
 import title from "./scenes/title";
+import { IonPhaser } from "@ion-phaser/react";
 
 const config = {
   type: Phaser.AUTO,
@@ -21,6 +23,10 @@ const config = {
   }
 };
 
-const game = new Phaser.Game(config);
+function Game() {
+  return (
+    <IonPhaser game={config} />
+  )
+}
 
-export default game;
+export default Game;

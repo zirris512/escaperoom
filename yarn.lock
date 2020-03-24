@@ -126,6 +126,18 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@ion-phaser/core@^1.2.0":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@ion-phaser/core/-/core-1.2.2.tgz#be50fd8eef284bd463fe44054501935cafdb6c64"
+  integrity sha512-c9095C8WjzUmnVy9U8lq7ZJgDBCCJL3Ism3ZFnYmB4Fjo/ZTLDJfdHpP1QHahnF9gz3Th8ocQlbX14vmhVtpQQ==
+
+"@ion-phaser/react@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@ion-phaser/react/-/react-1.2.1.tgz#f1a5113006f82435eb73434b788fe1c7a95bfb80"
+  integrity sha512-Xvfab1g59eqJtEGul0Cl4MRf+Vhjg4CKACr/ACLzArU9aJ3d+9cc9fjfMEQX6zNtWWK2SLIk5BhQkqlwMUAJnQ==
+  dependencies:
+    "@ion-phaser/core" "^1.2.0"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.0.0.tgz#10602de5570baea82f8afbfa2630b24e7a8cfe5b"
