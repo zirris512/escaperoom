@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@bit/formidablelabs.react-animations.bounce-in": "^1.0.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "path": "^0.12.7",
     "phaser": "^3.22.0",
     "react": "^16.12.0",
